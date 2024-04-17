@@ -4,5 +4,5 @@ The goal is to find the shortest path from Start to Target, while avoiding Walls
   
 User-defined parameters:
 - Grid size
-- Number of walls (as percentage of total space)
+- Number of Bombs (as percentage of total space)
 - Traning episodes
