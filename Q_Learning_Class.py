@@ -3,9 +3,9 @@ import matplotlib.pyplot as plt
 
 class Q_Learning:
     
-    def __init__(self, n, perc_walls, starting_location = None):
+    def __init__(self, n, perc_bombs, starting_location = None):
         self.n = n
-        self.num_walls = int(perc_walls*n*n)
+        self.num_bombs = int(perc_bombs*n*n)
         self.r = np.zeros((n,n)) - 1
         self.actions = [(0, 1), (0, -1), (-1, 0), (1, 0), (1,-1), (-1,1), (1,1), (-1,-1)]
         self.q_matrix = np.random.normal(size=(n,n, len(self.actions)))
@@ -20,7 +20,7 @@ class Q_Learning:
 
     
     def init_environment(self):
-        n, num_walls = self.n, self.num_walls
+        n, num_bombs = self.n, self.num_bombs
         
         self.r = np.zeros((n,n)) - 1
         
@@ -29,10 +29,10 @@ class Q_Learning:
         self.r[:, 0] = -100
         self.r[:, -1] = -100
         
-        x_walls = np.random.choice(np.arange(1,n-1), size=num_walls, replace=True)
-        y_walls = np.random.choice(np.arange(1, n-1), size=num_walls, replace=True)
-        self.r[x_walls, y_walls] = -100
-        self.x_walls, self.y_walls = x_walls, y_walls
+        x_bombs = np.random.choice(np.arange(1,n-1), size=num_bombs, replace=True)
+        y_bombs = np.random.choice(np.arange(1, n-1), size=num_bombs, replace=True)
+        self.r[x_bombs, y_bombs] = -100
+        self.x_bombs, self.y_bombs = x_bombs, y_bombs
 
         x_target, y_target = (np.random.randint(1, n-1), np.random.randint(1, n-1))
         self.r[x_target, y_target] = 100
@@ -121,39 +121,24 @@ class Q_Learning:
 
         return [x_path, y_path]
 
-    def plot_environment(self):
+    
+    def plot(self, path = None):
 
         x, y = self.starting_location
+        
         n = self.n
 
         fig, ax = plt.subplots()
 
         ax.axis([0, n-1, 0, n-1])
-        ax.scatter(self.x_walls, self.y_walls, c='k', label='Walls')
+        ax.scatter(self.x_bombs, self.y_bombs, c='k', label='Bombs')
         ax.scatter(self.x_target, self.y_target, c='red', label='Target')
-        ax.scatter(x, y, c='green', label='Start')
+        ax.scatter(x, y, c='blue', label='Start')
 
-        ax.set_xticks(np.arange(n))
-        ax.set_yticks(np.arange(n))
-        ax.grid()
-        ax.legend()
-
-        return fig
-    
-    def plot_path(self, path):
-
-        x_path, y_path = path
-        n = self.n
-
-        fig, ax = plt.subplots()
-
-        ax.axis([0, n-1, 0, n-1])
-        ax.scatter(self.x_walls, self.y_walls, c='k', label='Walls')
-        ax.scatter(self.x_target, self.y_target, c='red', label='Target')
-        ax.scatter(x_path[0], y_path[0], c='green', label='Start')
-
-        ax.plot(x_path, y_path)
-
+        if path is not None:
+            x_path, y_path = path
+            ax.plot(x_path, y_path)
+        
         ax.set_xticks(np.arange(n))
         ax.set_yticks(np.arange(n))
         ax.grid()
