@@ -1,10 +1,6 @@
 # 🤖 Q-Learning
-A simple playground to test Q-Learning Algorithm and help an agent explore the surrounding environment.  
-The goal is to find the shortest path from Start to Target, while avoiding Walls.  
-  
-User-defined parameters:
-- Grid size
-- Number of Bombs (as percentage of total space)
-- Traning episodes
+A simple playground to showcase the beauty of the Bellman Equation and Q-Learning.  
+Let the aget wander and see how it finds the optimal path to its target, minimizing distance and avoiding bombs.
 
+Access [here](https://q-learning.streamlit.app/)
 ![Webapp GUI](webapp_GUI.png)
