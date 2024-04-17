@@ -6,3 +6,5 @@ User-defined parameters:
 - Grid size
 - Number of Bombs (as percentage of total space)
 - Traning episodes
+
+[Webapp GUI](webapp_GUI.png)
