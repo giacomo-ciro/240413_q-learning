@@ -7,4 +7,4 @@ User-defined parameters:
 - Number of Bombs (as percentage of total space)
 - Traning episodes
 
-[Webapp GUI](webapp_GUI.png)
+![Webapp GUI](webapp_GUI.png)
