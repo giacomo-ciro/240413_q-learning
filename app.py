@@ -6,7 +6,7 @@ from Q_Learning_Class import Q_Learning
 
 st.set_page_config(
     page_title="Q-Learning Playground",
-    page_icon="🧊",
+    page_icon="🤖",
     layout="wide",
     initial_sidebar_state="expanded",
     menu_items={
